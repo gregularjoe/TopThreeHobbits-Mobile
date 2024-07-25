@@ -3,21 +3,24 @@
     "name": "Samwise Gamgee",
     "actor": "Sean Astin",
     "bestFriend": "Mr. Frodo",
-    "bestLine":  "'I en't been dropping no eaves sir!'",
-    "imageIndex": 0
+    "bestLine":  "'I ent been dropping no eaves sir!'",
+    "imageIndex": 0,
+    "imageURL": "../assets/samwise.jpg"
   },
   {
     "name": "Bilbo Baggins",
     "actor": "Ian Holm",
     "bestFriend": "Gandalf",
     "bestLine":  "'I don't know half of you half as well as I should like; and I like less than half of you half as well as you deserve.'",
-    "imageIndex": 1
+    "imageIndex": 1,
+    "imageURL": "../assets/bilbo.jpg"
   },
   {
     "name": "Frodo Baggins",
     "actor": "Elijah Wood",
     "bestFriend": "Sam",
     "bestLine": "'I wish it need not have happened in my time...'",
-    "imageIndex": 2
+    "imageIndex": 2,
+    "imageURL": "../assets/frodo.jpg"
   }
 ]

@@ -1,8 +1,8 @@
 import { StyleSheet, View, Pressable, Text } from 'react-native';
 
-export default function Button({ label, onPress }) {
+export default function Button({ label, onPress, selected }) {
   return (
-    <View style={styles.buttonContainer}>
+    <View style={[styles.buttonContainer, selected && styles.selectedButtonContainer]}>
       <Pressable style={styles.button} onPress={onPress}>
         <Text style={styles.buttonLabel}>{label}</Text>
       </Pressable>
@@ -19,8 +19,10 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
     padding: 3,
-
     backgroundColor: "#444",
+  },
+  selectedButtonContainer: {
+    backgroundColor: "#006400",
   },
   button: {
     borderRadius: 10,
@@ -29,9 +31,6 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
     flexDirection: 'row',
-  },
-  buttonIcon: {
-    paddingRight: 8,
   },
   buttonLabel: {
     color: '#fff',

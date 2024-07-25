@@ -1,6 +1,9 @@
 import { Image, Text } from 'react-native';
+import { useContext, useState } from 'react';
+import {HobbitContext} from './HobbitContext.js';
 
 export default function Hobbit( props ) {
+    console.log("ad")
 
     return (
         <>
