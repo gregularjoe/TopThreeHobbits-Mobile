@@ -2,6 +2,15 @@ import { Image, Text, View, StyleSheet } from 'react-native';
 import { useContext, useState } from 'react';
 import { HobbitContext } from './HobbitContext.js';
 
+/**
+ * Hobbit component displays information about a specific hobbit.
+ *
+ * @param {Object} props - The properties passed to the component.
+ * @param {Array} props.hobbits - Array of hobbit objects.
+ * @param {number} props.hobbitIndex - Index of the hobbit to display.
+ * @param {Object} props.image - Image source for the hobbit.
+ * @returns {JSX.Element} The rendered component.
+ */
 export default function Hobbit(props) {
     return (
         <View style={styles.container}>

@@ -8,6 +8,12 @@ import { TextInput as PaperTextInput } from 'react-native-paper';
 import { Button as PaperButton } from 'react-native-paper';
 import { Picker as SelectPicker } from '@react-native-picker/picker';
 
+/**
+ * Page component that displays a form to update hobbit information.
+ * It includes text inputs for hobbit details and a picker for hobbit rank.
+ *
+ * @returns {JSX.Element} The form to update hobbit information.
+ */
 export default function Page() {
   const { hobbit, setHobbit } = useContext(HobbitContext);
   const [hobbitName, setHobbitName] = useState(hobbit.name);
@@ -18,6 +24,9 @@ export default function Page() {
   const [hobbitImageIndex, setHobbitImageIndex] = useState(hobbit.imageIndex);
   const db = useSQLiteContext();
 
+  /**
+   * Updates the hobbit information in the database.
+   */
   const updateHobbitInfo = async () => {
     const imgIndex = parseInt(hobbitRank) - 1;
 
@@ -35,6 +44,11 @@ export default function Page() {
     setHobbit(updatedHobbit);
   };
 
+  /**
+   * Updates the hobbit image index.
+   *
+   * @param {string} text - The new image index value.
+   */
   const updateHobbitImageIndex = (text) => {
     setDisplayImageIndexValue(text);
     if (!isNaN(text) && text !== "") {
@@ -94,6 +108,9 @@ export default function Page() {
   );
 }
 
+/**
+ * Styles for the Page component.
+ */
 const styles = StyleSheet.create({
   formContainer: {
     flex: 1,

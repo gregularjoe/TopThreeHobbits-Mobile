@@ -3,14 +3,25 @@ import { router } from 'expo-router';
 import { useState } from 'react';
 import { Button as PaperButton } from 'react-native-paper';
 
+/**
+ * NavBar component provides navigation buttons for the application.
+ *
+ * @returns {JSX.Element} The rendered NavBar component.
+ */
 export default function NavBar() {
     const [activeButton, setActiveButton] = useState('home');
 
+    /**
+     * Handles the navigation to the home screen.
+     */
     const handleHome = () => {
         setActiveButton('home');
         router.navigate('/');
     }
 
+    /**
+     * Handles the navigation to the update screen.
+     */
     const handleUpdate = () => {
         setActiveButton('update');
         router.navigate('/update');

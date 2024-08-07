@@ -1,4 +1,4 @@
-import {useContext, useState, useEffect } from 'react';
+import { useContext, useState, useEffect } from 'react';
 import { StatusBar } from 'expo-status-bar';
 import { StyleSheet, Text, View } from 'react-native';
 
@@ -12,28 +12,43 @@ import HobbitContext from '../components/HobbitContext.js';
 const firstHobbitImage = require('../assets/samwise.jpg');
 const secondHobbitImage = require('../assets/bilbo.jpg');
 const thirdHobbitImage = require('../assets/frodo.jpg');
-const imageArray = [firstHobbitImage,secondHobbitImage,thirdHobbitImage];
+const imageArray = [firstHobbitImage, secondHobbitImage, thirdHobbitImage];
 
 let hobbits = [];
 
+/**
+ * App component that displays the main content of the app.
+ * It includes the Hobbit display and buttons to switch between hobbits.
+ *
+ * @returns {JSX.Element} The main content of the app.
+ */
 export default function App() {
   const db = useSQLiteContext();
   const [hobbitIndex, setHobbitIndex] = useState(null);
   const [currentImage, setCurrentImage] = useState(thirdHobbitImage);
   const [activeButton, setActiveButton] = useState(2); // Start with the third hobbit as active
 
+  /**
+   * Handles the press event for the first hobbit button.
+   */
   const handleHobbit1Press = () => {
     setHobbitIndex(0);
     setCurrentImage(firstHobbitImage);
     setActiveButton(0);
   }
 
+  /**
+   * Handles the press event for the second hobbit button.
+   */
   const handleHobbit2Press = () => {
     setHobbitIndex(1);
     setCurrentImage(secondHobbitImage);
     setActiveButton(1);
   }
 
+  /**
+   * Handles the press event for the third hobbit button.
+   */
   const handleHobbit3Press = () => {
     setHobbitIndex(2);
     setCurrentImage(thirdHobbitImage);
@@ -45,11 +60,11 @@ export default function App() {
       const result = await db.getAllAsync('SELECT * FROM hobbits');
       hobbits = [];
       for (let r of result) {
-        let data =  {
+        let data = {
           "name": r.name,
           "actor": r.actor,
           "bestFriend": r.bestFriend,
-          "bestLine" : r.bestLine,
+          "bestLine": r.bestLine,
           "imageIndex": r.imageIndex,
           "imageURL": "STRINGGSSS"
         }
@@ -72,36 +87,39 @@ export default function App() {
         <Hobbit hobbits={hobbits} image={currentImage} hobbitIndex={hobbitIndex} />
       </View>
       <View style={styles.buttonContainer}>
-          <PaperButton
-                style={activeButton === 0 ? styles.activeButton : styles.PaperButton}
-                labelStyle={activeButton === 0 ? styles.activeButtonText : styles.buttonText}
-                mode="contained"
-                onPress={handleHobbit1Press}
-              >
-                #1 Hobbit
-              </PaperButton>
-              <PaperButton
-                style={activeButton === 1 ? styles.activeButton : styles.PaperButton}
-                labelStyle={activeButton === 1 ? styles.activeButtonText : styles.buttonText}
-                mode="contained"
-                onPress={handleHobbit2Press}
-              >
-                #2 Hobbit
-              </PaperButton>
-              <PaperButton
-                style={activeButton === 2 ? styles.activeButton : styles.PaperButton}
-                labelStyle={activeButton === 2 ? styles.activeButtonText : styles.buttonText}
-                mode="contained"
-                onPress={handleHobbit3Press}
-              >
-                #3 Hobbit
-              </PaperButton>
+        <PaperButton
+          style={activeButton === 0 ? styles.activeButton : styles.PaperButton}
+          labelStyle={activeButton === 0 ? styles.activeButtonText : styles.buttonText}
+          mode="contained"
+          onPress={handleHobbit1Press}
+        >
+          #1 Hobbit
+        </PaperButton>
+        <PaperButton
+          style={activeButton === 1 ? styles.activeButton : styles.PaperButton}
+          labelStyle={activeButton === 1 ? styles.activeButtonText : styles.buttonText}
+          mode="contained"
+          onPress={handleHobbit2Press}
+        >
+          #2 Hobbit
+        </PaperButton>
+        <PaperButton
+          style={activeButton === 2 ? styles.activeButton : styles.PaperButton}
+          labelStyle={activeButton === 2 ? styles.activeButtonText : styles.buttonText}
+          mode="contained"
+          onPress={handleHobbit3Press}
+        >
+          #3 Hobbit
+        </PaperButton>
       </View>
       <StatusBar style="auto" />
     </View>
   );
 }
 
+/**
+ * Styles for the App component.
+ */
 const styles = StyleSheet.create({
   container1: {
     flex: 1,
@@ -122,7 +140,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
     paddingTop: 110,
-    marginTop: 20,
+    marginTop: 15,
     marginBottom: 100,
   },
   PaperButton: {
